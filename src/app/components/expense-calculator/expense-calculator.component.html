@@ -1,0 +1,38 @@
+<div class="card shadow-sm p-3 mb-5 bg-body rounded">
+  <div class="card-header display-6">
+    Expenses at Retirement Calculator
+  </div>
+  <div class="card-body">
+    <form #expenseCalc="ngForm">
+      <div class="form-floating form-group mb-3">
+        <input type="text" name="nm-cur-mnth-exp" class="form-control" id="cur-mnth-exp" placeholder="00.00" ngModel>
+        <label for="cur-mnth-exp">Current Monthyl Expense</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" name="nm-cur-annl-exp" class="form-control" id="cur-annl-exp" placeholder="00.00" ngModel>
+        <label for="cur-annl-exp">Current Annual Expense</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" name="nm-annl-inf-rte" class="form-control" id="annl-inf-rte" placeholder="0" ngModel>
+        <label for="annl-inf-rte">Annual Inflation Rate</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" name="nm-curr-age" class="form-control" id="curr-age" placeholder="0" ngModel>
+        <label for="curr-age">Current Age (yrs)</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" name="nm-exp-retir-age" class="form-control" id="exp-retir-age" placeholder="0" ngModel>
+        <label for="exp-retir-age">Expected Retirement Age (yrs)</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" name="nm-yrs-of-retire" class="form-control" id="yrs-of-retire" placeholder="0" ngModel>
+        <label for="yrs-of-retire">Years of Retirement</label>
+      </div>
+      <div>
+        <label class="fw-bold text-primary">Expense at Retirement (Inflation Adjusted)</label>
+        <p class="fw-bold text-primary">100.2</p>
+      </div>
+      <button class="btn btn-primary" (click)="next(expenseCalc)">Calculate Retirement Corpus... </button>
+    </form>
+  </div>
+</div>
