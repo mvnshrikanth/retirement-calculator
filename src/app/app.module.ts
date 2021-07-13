@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ExpenseCalculatorComponent } from './expense-calculator/expense-calculator.component';
-import { RetirementCorpusCalculatorComponent } from './retirement-corpus-calculator/retirement-corpus-calculator.component';
-import { MonthlyInvestmentsCalculatorComponent } from './monthly-investments-calculator/monthly-investments-calculator.component';
-import { AppNavigationComponent } from './app-navigation/app-navigation.component';
+import { ExpenseCalculatorComponent } from './components/expense-calculator/expense-calculator.component';
+import { RetirementCorpusCalculatorComponent } from './components/retirement-corpus-calculator/retirement-corpus-calculator.component';
+import { MonthlyInvestmentsCalculatorComponent } from './components/monthly-investments-calculator/monthly-investments-calculator.component';
+import { AppNavigationComponent } from './components/app-navigation/app-navigation.component';
 import { AppRoutingModule } from './modules/app.routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppNavigationComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

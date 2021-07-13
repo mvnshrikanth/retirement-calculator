@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExpenseCalculatorComponent } from '../expense-calculator/expense-calculator.component';
-import { MonthlyInvestmentsCalculatorComponent } from '../monthly-investments-calculator/monthly-investments-calculator.component';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-import { RetirementCorpusCalculatorComponent } from '../retirement-corpus-calculator/retirement-corpus-calculator.component';
+import { ExpenseCalculatorComponent } from '../components/expense-calculator/expense-calculator.component';
+import { MonthlyInvestmentsCalculatorComponent } from '../components/monthly-investments-calculator/monthly-investments-calculator.component';
+import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
+import { RetirementCorpusCalculatorComponent } from '../components/retirement-corpus-calculator/retirement-corpus-calculator.component';
 
 const routes: Routes = [
   { path: 'expense-calc', component: ExpenseCalculatorComponent },
