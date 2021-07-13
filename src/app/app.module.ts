@@ -9,7 +9,7 @@ import { AppNavigationComponent } from './app-navigation/app-navigation.componen
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: ExpenseCalculatorComponent },
+  { path: 'expense-calc', component: ExpenseCalculatorComponent },
   {
     path: 'retirement-corpus-calc',
     component: RetirementCorpusCalculatorComponent,
@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'monthly-invst-calc',
     component: MonthlyInvestmentsCalculatorComponent,
   },
-  { path: '**', redirectTo:''},
+  { path: '**', redirectTo: 'expense-calc' },
 ];
 
 @NgModule({
