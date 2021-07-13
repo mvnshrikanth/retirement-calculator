@@ -6,7 +6,8 @@ import { ExpenseCalculatorComponent } from './expense-calculator/expense-calcula
 import { RetirementCorpusCalculatorComponent } from './retirement-corpus-calculator/retirement-corpus-calculator.component';
 import { MonthlyInvestmentsCalculatorComponent } from './monthly-investments-calculator/monthly-investments-calculator.component';
 import { AppNavigationComponent } from './app-navigation/app-navigation.component';
-import { AppRoutingModule } from './app.routing.module';
+import { AppRoutingModule } from './modules/app.routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app.routing.module';
     RetirementCorpusCalculatorComponent,
     MonthlyInvestmentsCalculatorComponent,
     AppNavigationComponent,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
