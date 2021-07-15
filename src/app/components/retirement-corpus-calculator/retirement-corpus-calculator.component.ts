@@ -32,7 +32,7 @@ export class RetirementCorpusCalculatorComponent implements OnInit {
   }
 
   enableSubmitButton() {
-    if (this.userData.numOfYearsAftRetirement > 0) {
+    if (this.userData.numOfYearsAftRetirement > 0 && this.userData.rateOfReturnAfterRetirement > 0) {
       this.disableButton = false;
     } else {
       this.disableButton = true;
