@@ -4,6 +4,11 @@ export interface UserData {
   annualInfRate: number;
   curAge: number;
   expectedRetirementAge: number;
-  numbOfYrsToRetire: number;
+  numbOfYrsToRetirement: number;
   expenseAtRetirement: number;
+  lifeExpectancy: number;
+  numOfYearsAftRetirement: number;
+  rateOfReturnAfterRetirement: number;
+  inflateAdjReturn: number;
+  retirementCorpusAmount: number;
 }
