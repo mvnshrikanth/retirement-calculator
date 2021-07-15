@@ -3,7 +3,7 @@
     Expenses at Retirement Calculator
   </div>
   <div class="card-body">
-    <form #expenseCalc="ngForm" (ngSubmit)="onSubmit(expenseCalc)">
+    <form>
       <div class="form-floating form-group mb-3">
         <input type="number" name="curMonthlyExp" class="form-control" id="curMonthlyExp" placeholder="0"
                [(ngModel)]="userData.curMonthlyExp" (ngModelChange)="calcAnnualExp()"
@@ -11,41 +11,40 @@
                required ngModel min="0">
         <label for="curMonthlyExp">Current Monthly Expense (₹)</label>
       </div>
-      <div class="form-floating mb-3">
-        <input type="number" name="curAnnualExp" class="form-control" id="curAnnualExp" placeholder="0" ngModel
+      <div class="form-floating form-group mb-3">
+        <input type="number" name="curAnnualExp" class="form-control" id="curAnnualExp" placeholder="0"
                [(ngModel)]="userData.curAnnualExp" (ngModelChange)="calcMonthlyExp()"
                [ngModelOptions]="{updateOn:'blur'}" required min="0">
         <label for="curAnnualExp">Current Annual Expense (₹)</label>
       </div>
-      <div class="form-floating mb-3">
-        <input type="number" name="annualInfRate" class="form-control" id="annualInfRate" placeholder="0" ngModel
+      <div class="form-floating  form-group mb-3">
+        <input type="number" name="annualInfRate" class="form-control" id="annualInfRate" placeholder="0"
                [(ngModel)]="userData.annualInfRate" (ngModelChange)="calcExpenseAtRetirement()"
                [ngModelOptions]="{updateOn:'blur'}" required min="0"
                max="15">
         <label for="annualInfRate">Annual Inflation Rate (%)</label>
       </div>
-      <div class="form-floating mb-3">
-        <input type="number" name="curAge" class="form-control" id="curAge" placeholder="0" ngModel
+      <div class="form-floating  form-group mb-3">
+        <input type="number" name="curAge" class="form-control" id="curAge" placeholder="0"
                [(ngModel)]="userData.curAge" (ngModelChange)="calcNumbOfYrsToRetire()"
                [ngModelOptions]="{updateOn:'blur'}" required min="0">
         <label for="curAge">Current Age (yrs)</label>
       </div>
-      <div class="form-floating mb-3">
-        <input type="number" name="expRetirementAge" class="form-control" id="expRetirementAge" placeholder="0" ngModel
+      <div class="form-floating  form-group mb-3">
+        <input type="number" name="expRetirementAge" class="form-control" id="expRetirementAge" placeholder="0"
                [(ngModel)]="userData.expectedRetirementAge" (ngModelChange)="calcNumbOfYrsToRetire()"
                [ngModelOptions]="{updateOn:'blur'}" required min="0">
         <label for="expRetirementAge">Expected Retirement Age (yrs)</label>
       </div>
-      <div class="mb-3 ml-3">
-        <label class="text-primary">Years for Retirement</label>
-        <p class="text-primary">{{userData.numbOfYrsToRetire }}</p>
+      <div class="form-group mb-3">
+        <label>Years for Retirement</label>
+        <p>{{userData.numbOfYrsToRetire}}</p>
       </div>
-      <div class="mb-3 ml-3">
+      <div class="form-group mb-3">
         <label class="fw-bold text-primary">Expense at Retirement (Inflation Adjusted)</label>
         <p class="fw-bold text-primary">{{userData.expenseAtRetirement | currency:'INR'}}</p>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!expenseCalc.valid">Calculate Retirement Corpus...
-      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="disableButton">Calculate Retirement Corpus...</button>
     </form>
   </div>
 </div>
