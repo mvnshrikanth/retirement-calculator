@@ -5,24 +5,27 @@
   <div class="card-body">
     <form>
       <div class="form-group mb-3">
-        <label class="text-secondary">Retirement Corpus Amount</label>
-        <p class="text-secondary">{{userData.retirementCorpusAmount| currency:'INR' }}</p>
+        <label>Retirement Corpus Amount</label>
+        <p>{{userData.retirementCorpusAmount| currency:'INR' }}</p>
       </div>
-      <div class="form-floating form-group mb-3">
+      <div class="form-group mb-3">
+        <label class="form-label">Rate of Interest During Accumulation</label>
+        <input type="range" class="form-range" min="1" max="30" id="rateOfInterestDuringAccumulationRange"
+               name="rateOfInterestDuringAccumulationRange"
+               [(ngModel)]="userData.rateOfInterestDuringAccumulation" (ngModelChange)="calcMonthlyInvestment()">
         <input type="number" name="rateOfInterestDuringAccumulation" class="form-control"
                id="rateOfInterestDuringAccumulation" placeholder="0"
                [(ngModel)]="userData.rateOfInterestDuringAccumulation" (ngModelChange)="calcMonthlyInvestment()"
                [ngModelOptions]="{updateOn:'blur'}"
                [ngClass]="{'is-invalid':rateOfInterestDuringAccumulation.invalid && (rateOfInterestDuringAccumulation.touched || rateOfInterestDuringAccumulation.dirty)}"
                required min="1" max="30" #rateOfInterestDuringAccumulation="ngModel">
-        <label for="rateOfInterestDuringAccumulation" class="form-label">Rate of Interest During Accumulation</label>
         <div class="invalid-feedback">
           Is a required field with min value of 1 and max of 30.
         </div>
       </div>
       <div class="form-group mb-3">
-        <label class="text-secondary">Number of Years to retire (yrs)</label>
-        <p class="text-secondary">{{userData.numbOfYrsToRetirement}}</p>
+        <label>Number of Years to retire (yrs)</label>
+        <p>{{userData.numbOfYrsToRetirement}}</p>
       </div>
       <div class="form-group mb-3">
         <label class="fw-bold text-primary">Monthly investments</label>

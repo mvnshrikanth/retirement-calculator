@@ -29,7 +29,7 @@ export class RetirementCorpusCalculatorComponent implements OnInit {
   }
 
   calcInflationAdjustedReturn() {
-    this.userData.inflateAdjReturn = (((1 + this.userData.rateOfReturnAfterRetirement) / (1 + this.userData.annualInfRate)) - 1) * 100;
+    this.userData.inflateAdjReturn = Math.round((((1 + this.userData.rateOfReturnAfterRetirement) / (1 + this.userData.annualInfRate)) - 1) * 100);
     this.calcRetirementCorpusAmount();
   }
 
