@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserData} from "../../modules/user-data";
+import {UserDataService} from "../../services/user-data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-retirement-corpus-calculator',
@@ -8,24 +10,14 @@ import {UserData} from "../../modules/user-data";
 })
 export class RetirementCorpusCalculatorComponent implements OnInit {
 
-  userData: UserData = {
-    curMonthlyExp: 10000,
-    curAnnualExp: 720000,
-    annualInfRate: 7,
-    curAge: 30,
-    expectedRetirementAge: 60,
-    numbOfYrsToRetirement: 30,
-    expenseAtRetirement: 2740411,
-    lifeExpectancy: 0,
-    numOfYearsAftRetirement: 0,
-    rateOfReturnAfterRetirement: 0,
-    inflateAdjReturn: 0,
-    retirementCorpusAmount: 0,
-    rateOfInterestDuringAccumulation: 0,
-    monthlyInvestment: 0
-  };
+  userData: UserData;
+  userDataService: UserDataService;
+  router: Router;
 
-  constructor() {
+  constructor(userDataService: UserDataService, router: Router) {
+    this.userDataService = userDataService;
+    this.userData = userDataService.getUserData();
+    this.router = router;
   }
 
   ngOnInit(): void {
@@ -43,5 +35,10 @@ export class RetirementCorpusCalculatorComponent implements OnInit {
 
   calcRetirementCorpusAmount() {
     this.userData.retirementCorpusAmount = this.userData.expenseAtRetirement * this.userData.numOfYearsAftRetirement * this.userData.inflateAdjReturn;
+  }
+
+  onSubmit() {
+    this.calcRetirementCorpusAmount();
+    this.router.navigateByUrl('/monthly-invst-calc');
   }
 }
