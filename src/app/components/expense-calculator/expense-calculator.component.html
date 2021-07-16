@@ -3,12 +3,12 @@
     Expenses at Retirement Calculator
   </div>
   <div class="card-body">
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-floating form-group mb-3">
         <input type="number" name="curMonthlyExp" class="form-control" id="curMonthlyExp" placeholder="0"
                [(ngModel)]="userData.curMonthlyExp" (ngModelChange)="calcAnnualExp()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':curMonthlyExp.errors && curMonthlyExp.touched && curMonthlyExp.dirty}"
+               [ngClass]="{'is-invalid':curMonthlyExp.invalid && (curMonthlyExp.touched || curMonthlyExp.dirty)}"
                required ngModel min="1" #curMonthlyExp="ngModel">
         <label for="curMonthlyExp">Current Monthly Expense (₹)</label>
         <div class="invalid-feedback">
@@ -23,7 +23,7 @@
         <input type="number" name="annualInfRate" class="form-control" id="annualInfRate" placeholder="0"
                [(ngModel)]="userData.annualInfRate" (ngModelChange)="calcExpenseAtRetirement()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':annualInfRate.errors && annualInfRate.touched && annualInfRate.dirty}"
+               [ngClass]="{'is-invalid':annualInfRate.invalid &&( annualInfRate.touched || annualInfRate.dirty)}"
                required min="1" max="15" #annualInfRate="ngModel">
         <label for="annualInfRate">Annual Inflation Rate (%)</label>
         <div class="invalid-feedback">
@@ -34,7 +34,7 @@
         <input type="number" name="curAge" class="form-control" id="curAge" placeholder="0"
                [(ngModel)]="userData.curAge" (ngModelChange)="calcNumbOfYrsToRetire()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':curAge.errors && curAge.touched && curAge.dirty}"
+               [ngClass]="{'is-invalid':curAge.invalid && (curAge.touched || curAge.dirty)}"
                required min="1" max="60" #curAge="ngModel">
         <label for="curAge">Current Age (yrs)</label>
         <div class="invalid-feedback">
@@ -45,7 +45,7 @@
         <input type="number" name="expRetirementAge" class="form-control" id="expRetirementAge" placeholder="0"
                [(ngModel)]="userData.expectedRetirementAge" (ngModelChange)="calcNumbOfYrsToRetire()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':expRetirementAge.errors && expRetirementAge.touched && expRetirementAge.dirty}"
+               [ngClass]="{'is-invalid':expRetirementAge.invalid && (expRetirementAge.touched || expRetirementAge.dirty)}"
                required min="60" #expRetirementAge="ngModel">
         <label for="expRetirementAge">Expected Retirement Age (yrs)</label>
         <div class="invalid-feedback">

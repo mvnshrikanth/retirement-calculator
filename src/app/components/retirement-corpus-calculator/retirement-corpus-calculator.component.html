@@ -3,7 +3,7 @@
     Retirement Corpus Amount Calculator
   </div>
   <div class="card-body">
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group mb-3">
         <label class="text-secondary">Expense at Retirement (inflation adjusted)</label>
         <p class="text-secondary">{{userData.expenseAtRetirement| currency:'INR' }}</p>
@@ -12,7 +12,7 @@
         <input type="number" class="form-control" name="lifeExpectancy" id="lifeExpectancy" placeholder="0"
                [(ngModel)]="userData.lifeExpectancy" (ngModelChange)="calcNumOfYearsAftRetirement()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':lifeExpectancy.errors && lifeExpectancy.touched && lifeExpectancy.dirty}"
+               [ngClass]="{'is-invalid':lifeExpectancy.invalid &&( lifeExpectancy.touched || lifeExpectancy.dirty)}"
                required min="60" max="100" #lifeExpectancy="ngModel">
         <label for="lifeExpectancy">Life Expectancy (yrs)</label>
         <div class="invalid-feedback">
@@ -28,7 +28,7 @@
                placeholder="0"
                [(ngModel)]="userData.rateOfReturnAfterRetirement" (ngModelChange)="calcInflationAdjustedReturn()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':rateOfReturnAfterRetirement.errors && rateOfReturnAfterRetirement.touched && rateOfReturnAfterRetirement.dirty}"
+               [ngClass]="{'is-invalid':rateOfReturnAfterRetirement.invalid && (rateOfReturnAfterRetirement.touched || rateOfReturnAfterRetirement.dirty)}"
                required min="1" max="30" #rateOfReturnAfterRetirement="ngModel">
         <label for="rateOfReturnAfterRetirement">Rate of Return after retirement (%)</label>
         <div class="invalid-feedback">

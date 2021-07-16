@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserData} from "../../modules/user-data";
+import {UserDataService} from "../../services/user-data.service";
 
 @Component({
   selector: 'app-monthly-investments-calculator',
@@ -8,24 +9,12 @@ import {UserData} from "../../modules/user-data";
 })
 export class MonthlyInvestmentsCalculatorComponent implements OnInit {
 
-  userData: UserData = {
-    curMonthlyExp: 10000,
-    curAnnualExp: 720000,
-    annualInfRate: 7,
-    curAge: 30,
-    expectedRetirementAge: 60,
-    numbOfYrsToRetirement: 30,
-    expenseAtRetirement: 2740411,
-    lifeExpectancy: 80,
-    numOfYearsAftRetirement: 20,
-    rateOfReturnAfterRetirement: 8,
-    inflateAdjReturn: 12,
-    retirementCorpusAmount: 685102750,
-    rateOfInterestDuringAccumulation: 5,
-    monthlyInvestment: 0
-  };
+  userData: UserData;
+  userDataService: UserDataService;
 
-  constructor() {
+  constructor(userDataService: UserDataService) {
+    this.userDataService = userDataService;
+    this.userData = userDataService.getUserData();
   }
 
   ngOnInit(): void {

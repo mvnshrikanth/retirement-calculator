@@ -13,7 +13,7 @@
                id="rateOfInterestDuringAccumulation" placeholder="0"
                [(ngModel)]="userData.rateOfInterestDuringAccumulation" (ngModelChange)="calcMonthlyInvestment()"
                [ngModelOptions]="{updateOn:'blur'}"
-               [ngClass]="{'is-invalid':rateOfInterestDuringAccumulation.errors}"
+               [ngClass]="{'is-invalid':rateOfInterestDuringAccumulation.invalid && (rateOfInterestDuringAccumulation.touched || rateOfInterestDuringAccumulation.dirty)}"
                required min="1" max="30" #rateOfInterestDuringAccumulation="ngModel">
         <label for="rateOfInterestDuringAccumulation" class="form-label">Rate of Interest During Accumulation</label>
         <div class="invalid-feedback">
