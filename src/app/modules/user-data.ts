@@ -11,4 +11,6 @@ export interface UserData {
   rateOfReturnAfterRetirement: number;
   inflateAdjReturn: number;
   retirementCorpusAmount: number;
+  rateOfInterestDuringAccumulation: number;
+  monthlyInvestment: number;
 }

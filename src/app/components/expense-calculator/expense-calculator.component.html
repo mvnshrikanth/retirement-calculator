@@ -3,13 +3,17 @@
     Expenses at Retirement Calculator
   </div>
   <div class="card-body">
-    <form>
+    <form #form="ngForm">
       <div class="form-floating form-group mb-3">
         <input type="number" name="curMonthlyExp" class="form-control" id="curMonthlyExp" placeholder="0"
                [(ngModel)]="userData.curMonthlyExp" (ngModelChange)="calcAnnualExp()"
                [ngModelOptions]="{updateOn:'blur'}"
-               required ngModel min="0">
+               [ngClass]="{'is-invalid':curMonthlyExp.errors && curMonthlyExp.touched && curMonthlyExp.dirty}"
+               required ngModel min="1" #curMonthlyExp="ngModel">
         <label for="curMonthlyExp">Current Monthly Expense (₹)</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 1.
+        </div>
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Current Annual Expense (₹)</label>
@@ -18,21 +22,35 @@
       <div class="form-floating  form-group mb-3">
         <input type="number" name="annualInfRate" class="form-control" id="annualInfRate" placeholder="0"
                [(ngModel)]="userData.annualInfRate" (ngModelChange)="calcExpenseAtRetirement()"
-               [ngModelOptions]="{updateOn:'blur'}" required min="0"
-               max="15">
+               [ngModelOptions]="{updateOn:'blur'}"
+               [ngClass]="{'is-invalid':annualInfRate.errors && annualInfRate.touched && annualInfRate.dirty}"
+               required min="1" max="15" #annualInfRate="ngModel">
         <label for="annualInfRate">Annual Inflation Rate (%)</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 1 and max of 15.
+        </div>
       </div>
       <div class="form-floating  form-group mb-3">
         <input type="number" name="curAge" class="form-control" id="curAge" placeholder="0"
                [(ngModel)]="userData.curAge" (ngModelChange)="calcNumbOfYrsToRetire()"
-               [ngModelOptions]="{updateOn:'blur'}" required min="0">
+               [ngModelOptions]="{updateOn:'blur'}"
+               [ngClass]="{'is-invalid':curAge.errors && curAge.touched && curAge.dirty}"
+               required min="1" max="60" #curAge="ngModel">
         <label for="curAge">Current Age (yrs)</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 1 and max of 60.
+        </div>
       </div>
       <div class="form-floating  form-group mb-3">
         <input type="number" name="expRetirementAge" class="form-control" id="expRetirementAge" placeholder="0"
                [(ngModel)]="userData.expectedRetirementAge" (ngModelChange)="calcNumbOfYrsToRetire()"
-               [ngModelOptions]="{updateOn:'blur'}" required min="0">
+               [ngModelOptions]="{updateOn:'blur'}"
+               [ngClass]="{'is-invalid':expRetirementAge.errors && expRetirementAge.touched && expRetirementAge.dirty}"
+               required min="60" #expRetirementAge="ngModel">
         <label for="expRetirementAge">Expected Retirement Age (yrs)</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 60.
+        </div>
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Years for Retirement</label>
@@ -42,7 +60,7 @@
         <label class="fw-bold text-primary">Expense at Retirement (Inflation Adjusted)</label>
         <p class="fw-bold text-primary">{{userData.expenseAtRetirement | currency:'INR'}}</p>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="disableButton">Calculate Retirement Corpus...</button>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Calculate Retirement Corpus...</button>
     </form>
   </div>
 </div>

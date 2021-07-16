@@ -3,7 +3,7 @@
     Retirement Corpus Amount Calculator
   </div>
   <div class="card-body">
-    <form>
+    <form #form="ngForm">
       <div class="form-group mb-3">
         <label class="text-secondary">Expense at Retirement (inflation adjusted)</label>
         <p class="text-secondary">{{userData.expenseAtRetirement| currency:'INR' }}</p>
@@ -11,8 +11,13 @@
       <div class="form-floating form-group mb-3">
         <input type="number" class="form-control" name="lifeExpectancy" id="lifeExpectancy" placeholder="0"
                [(ngModel)]="userData.lifeExpectancy" (ngModelChange)="calcNumOfYearsAftRetirement()"
-               [ngModelOptions]="{updateOn:'blur'}" required min="0">
+               [ngModelOptions]="{updateOn:'blur'}"
+               [ngClass]="{'is-invalid':lifeExpectancy.errors && lifeExpectancy.touched && lifeExpectancy.dirty}"
+               required min="60" max="100" #lifeExpectancy="ngModel">
         <label for="lifeExpectancy">Life Expectancy (yrs)</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 60 and max of 100.
+        </div>
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Number of years after retirement (yrs)</label>
@@ -22,8 +27,13 @@
         <input type="number" class="form-control" name="rateOfReturnAfterRetirement" id="rateOfReturnAfterRetirement"
                placeholder="0"
                [(ngModel)]="userData.rateOfReturnAfterRetirement" (ngModelChange)="calcInflationAdjustedReturn()"
-               [ngModelOptions]="{updateOn:'blur'}" required min="0">
+               [ngModelOptions]="{updateOn:'blur'}"
+               [ngClass]="{'is-invalid':rateOfReturnAfterRetirement.errors && rateOfReturnAfterRetirement.touched && rateOfReturnAfterRetirement.dirty}"
+               required min="1" max="30" #rateOfReturnAfterRetirement="ngModel">
         <label for="rateOfReturnAfterRetirement">Rate of Return after retirement (%)</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 1 and max of 30.
+        </div>
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Inflation Adjusted Return (%)</label>
@@ -33,7 +43,7 @@
         <label class="fw-bold text-primary">Retirement Corpus Amount</label>
         <p class="fw-bold text-primary">{{userData.retirementCorpusAmount | currency:'INR'}}</p>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="disableButton">Calculate Monthly Investments for
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Calculate Monthly Investments for
         retirement...
       </button>
     </form>
