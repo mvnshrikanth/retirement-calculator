@@ -5,20 +5,28 @@
   <div class="card-body">
     <form>
       <div class="form-group mb-3">
-        <label>Retirement Corpus Amount </label>
-        <p>1000</p>
+        <label class="text-secondary">Retirement Corpus Amount</label>
+        <p class="text-secondary">{{userData.retirementCorpusAmount| currency:'INR' }}</p>
       </div>
       <div class="form-floating form-group mb-3">
-        <label for="rte-of-int-drng-accum" class="form-label">Rate of Interest During Accumulation</label>
-        <input type="text" class="form-control" id="rte-of-int-drng-accum">
+        <input type="number" name="rateOfInterestDuringAccumulation" class="form-control"
+               id="rateOfInterestDuringAccumulation" placeholder="0"
+               [(ngModel)]="userData.rateOfInterestDuringAccumulation" (ngModelChange)="calcMonthlyInvestment()"
+               [ngModelOptions]="{updateOn:'blur'}"
+               [ngClass]="{'is-invalid':rateOfInterestDuringAccumulation.errors}"
+               required min="1" max="30" #rateOfInterestDuringAccumulation="ngModel">
+        <label for="rateOfInterestDuringAccumulation" class="form-label">Rate of Interest During Accumulation</label>
+        <div class="invalid-feedback">
+          Is a required field with min value of 1 and max of 30.
+        </div>
       </div>
-      <div class="form-floating form-group mb-3">
-        <label for="num-of-yr-aftr-retire" class="form-label">Number of Years to retire</label>
-        <input type="text" class="form-control" id="num-of-yr-aftr-retire">
+      <div class="form-group mb-3">
+        <label class="text-secondary">Number of Years to retire (yrs)</label>
+        <p class="text-secondary">{{userData.numbOfYrsToRetirement}}</p>
       </div>
       <div class="form-group mb-3">
         <label class="fw-bold text-primary">Monthly investments</label>
-        <p class="fw-bold text-primary">1000</p>
+        <p class="fw-bold text-primary">{{userData.monthlyInvestment | currency:'INR'}}</p>
       </div>
     </form>
   </div>
