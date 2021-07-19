@@ -6,7 +6,7 @@ import {ExpenseCalculatorComponent} from './components/expense-calculator/expens
 import {RetirementCorpusCalculatorComponent} from './components/retirement-corpus-calculator/retirement-corpus-calculator.component';
 import {MonthlyInvestmentsCalculatorComponent} from './components/monthly-investments-calculator/monthly-investments-calculator.component';
 import {AppNavigationComponent} from './components/app-navigation/app-navigation.component';
-import {AppRoutingModule} from './modules/app-routing.module';
+import {AppRoutingModule} from './routing/app-routing.module';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {FormsModule} from '@angular/forms';
 import {UserDataService} from "./services/user-data.service";

@@ -39,6 +39,7 @@ export class RetirementCorpusCalculatorComponent implements OnInit {
 
   onSubmit() {
     this.calcRetirementCorpusAmount();
+    this.userData.retirementCorpusAmountCalculated = true;
     this.router.navigateByUrl('/monthly-invst-calc');
   }
 }

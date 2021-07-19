@@ -16,10 +16,21 @@ export class UserDataService {
     inflateAdjReturn: 0,
     retirementCorpusAmount: 0,
     rateOfInterestDuringAccumulation: 0,
-    monthlyInvestment: 0
+    monthlyInvestment: 0,
+    expenseAtRetirementCalculated: false,
+    retirementCorpusAmountCalculated: false
   };
 
-  getUserData() {
+  getUserData(): UserData {
     return this.userData;
   }
+
+  allowExpenseAtRetirementCalculation(): boolean {
+    return this.userData.expenseAtRetirementCalculated;
+  }
+
+  allowRetirementCorpusAmountCalculation(): boolean {
+    return this.userData.retirementCorpusAmountCalculated;
+  }
+
 }
