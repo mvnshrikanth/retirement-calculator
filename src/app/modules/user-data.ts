@@ -13,4 +13,6 @@ export interface UserData {
   retirementCorpusAmount: number;
   rateOfInterestDuringAccumulation: number;
   monthlyInvestment: number;
+  expenseAtRetirementCalculated: boolean;
+  retirementCorpusAmountCalculated: boolean;
 }

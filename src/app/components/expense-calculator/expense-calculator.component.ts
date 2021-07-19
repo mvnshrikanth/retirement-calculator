@@ -38,7 +38,8 @@ export class ExpenseCalculatorComponent implements OnInit {
   }
 
   onSubmit() {
-    this.calcExpenseAtRetirement()
+    this.calcExpenseAtRetirement();
+    this.userData.expenseAtRetirementCalculated = true;
     this.router.navigateByUrl('/retirement-corpus-calc');
   }
 }
